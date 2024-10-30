@@ -15,9 +15,9 @@ import java.util.Properties;
 public class ConnectionManager {
     private static final Logger logger = LoggerFactory.getLogger(ConnectionManager.class);
 
-    private static String URL_CONEX_BD;
-    private static String USER;
-    private static String PASS;
+    public static String URL_CONEX_BD = "jdbc:mysql://localhost:3306/practicaUt2Acceso";
+    public static String USER = "root";
+    public static String PASS = "";
 
     private static ConnectionManager instance;
     private static HikariDataSource dataSource;
