@@ -64,3 +64,117 @@
 2024-11-06 11:46:35 [main] INFO  service.ProductService - Connection sucessful
 2024-11-06 11:46:35 [main] ERROR dao.impl.ProductDaoJdbc - Update prepared statement error
 2024-11-06 11:46:35 [main] INFO  service.ProductService - Product modificated sucessfully
+2024-11-06 17:33:29 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 17:33:30 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51c668e3
+2024-11-06 17:33:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 17:33:30 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 17:33:30 [main] INFO  dao.impl.ProductDaoJdbc - Insert prepared statement sucessfully
+2024-11-06 17:33:31 [main] ERROR dao.impl.ProductDaoJdbc - Insert prepared statement error
+2024-11-06 17:33:31 [main] ERROR service.ProductService - General error
+java.lang.RuntimeException: Error inserting product
+	at dao.impl.ProductDaoJdbc.insert(ProductDaoJdbc.java:55)
+	at service.ProductService.newProduct(ProductService.java:30)
+	at App.main(App.java:22)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'practicaut2acceso.product' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1165)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1100)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1466)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1083)
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61)
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java)
+	at dao.impl.ProductDaoJdbc.insert(ProductDaoJdbc.java:36)
+	... 2 common frames omitted
+2024-11-06 17:33:31 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 17:33:31 [main] ERROR dao.impl.ProductDaoJdbc - Update prepared statement error
+2024-11-06 17:33:31 [main] INFO  service.ProductService - Product modificated sucessfully
+2024-11-06 17:36:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 17:36:04 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70e9c95d
+2024-11-06 17:36:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 17:36:04 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 17:36:04 [main] INFO  dao.impl.ProductDaoJdbc - Insert prepared statement sucessfully
+2024-11-06 17:36:04 [main] INFO  service.ProductService - Product created sucessfully
+2024-11-06 17:36:36 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 17:37:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 17:37:14 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70e9c95d
+2024-11-06 17:37:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 17:37:14 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 17:37:16 [main] ERROR dao.impl.ProductDaoJdbc - Update prepared statement error
+2024-11-06 17:37:16 [main] INFO  service.ProductService - Product modificated sucessfully
+2024-11-06 17:57:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 17:57:05 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e6a8155
+2024-11-06 17:57:05 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 17:57:05 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 17:57:06 [main] ERROR dao.impl.ProductDaoJdbc - Update prepared statement error
+2024-11-06 17:57:06 [main] INFO  service.ProductService - Product modificated sucessfully
+2024-11-06 18:00:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:00:24 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51c668e3
+2024-11-06 18:00:24 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:00:24 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:00:24 [main] INFO  dao.impl.ProductDaoJdbc - Modification successful, rows affected: 1
+2024-11-06 18:00:24 [main] INFO  service.ProductService - Product modificated sucessfully
+2024-11-06 18:01:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:01:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51c668e3
+2024-11-06 18:01:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:01:37 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:01:37 [main] WARN  dao.impl.ProductDaoJdbc - No rows affected, check if the product ID exists.
+2024-11-06 18:01:37 [main] INFO  dao.impl.ProductDaoJdbc - Modification prepared statement sucessfully
+2024-11-06 18:01:37 [main] INFO  service.ProductService - Product modificated sucessfully
+2024-11-06 18:40:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:40:16 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
+2024-11-06 18:40:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:40:16 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:40:16 [main] ERROR dao.impl.ProductDaoJdbc - SQL ERROR in DeleteProduct
+2024-11-06 18:40:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:40:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
+2024-11-06 18:40:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:40:56 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:40:56 [main] WARN  dao.impl.ProductDaoJdbc - Product ID not found
+2024-11-06 18:41:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:41:27 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6221a451
+2024-11-06 18:41:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:41:27 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:41:27 [main] INFO  dao.impl.ProductDaoJdbc - Product with ID 11 sucessfully deleted
+2024-11-06 18:57:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:57:13 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
+2024-11-06 18:57:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:57:13 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:57:13 [main] INFO  dao.impl.ProductDaoJdbc - Insert prepared statement sucessfully
+2024-11-06 18:58:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 18:58:15 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6221a451
+2024-11-06 18:58:15 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 18:58:15 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 18:58:15 [main] ERROR dao.impl.ProductDaoJdbc - SQL ERROR in GetById
+2024-11-06 19:00:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 19:00:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e6a8155
+2024-11-06 19:00:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 19:00:37 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 19:30:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 19:30:21 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
+2024-11-06 19:30:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 19:30:21 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 19:30:21 [main] INFO  dao.impl.ProductDaoJdbc - Insert prepared statement sucessfully
+2024-11-06 19:31:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 19:31:33 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e6a8155
+2024-11-06 19:31:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 19:31:33 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 19:31:33 [main] ERROR dao.impl.ProductDaoJdbc - GENERAL ERROR in GetAll
+java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" because "productList" is null
+	at dao.impl.ProductDaoJdbc.getAll(ProductDaoJdbc.java:172)
+	at service.ProductService.getAllProducts(ProductService.java:119)
+	at App.main(App.java:47)
+2024-11-06 19:33:00 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 19:33:00 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e6a8155
+2024-11-06 19:33:00 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 19:33:00 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 19:45:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 19:45:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
+2024-11-06 19:45:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 19:45:56 [main] INFO  service.ProductService - Connection sucessful
+2024-11-06 19:45:56 [main] INFO  dao.impl.ProductDaoJdbc - Insert prepared statement sucessfully
+2024-11-06 19:46:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-06 19:46:17 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
+2024-11-06 19:46:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-06 19:46:17 [main] INFO  service.ProductService - Connection sucessful

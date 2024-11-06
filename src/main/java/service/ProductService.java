@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductService {
 
@@ -29,8 +31,6 @@ public class ProductService {
             productDao=new ProductDaoJdbc(conn);
             int id = productDao.insert(toCreate);
             toCreate.setId(id);
-
-            logger.info("Product created sucessfully");
 
         } catch (SQLException e) {
             logger.error("There was an error trying to establish the connection",e);
@@ -53,9 +53,7 @@ public class ProductService {
             logger.info("Connection sucessful");
 
             productDao=new ProductDaoJdbc(conn);
-            productDao.update(toUpdate);
-
-            logger.info("Product modificated sucessfully");
+            boolean verify = productDao.update(toUpdate);
 
         } catch (SQLException e) {
             logger.error("There was an error trying to establish the connection",e);
@@ -65,5 +63,92 @@ public class ProductService {
             //throw new RuntimeException(e);
         }
         return toUpdate;
+    }
+
+    public boolean deleteProduct(Product toDelete){
+
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try(Connection conn = instance.getConnection()){
+
+            logger.info("Connection sucessful");
+
+            productDao=new ProductDaoJdbc(conn);
+            boolean verify = productDao.delete(toDelete.getId());
+            return verify;
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        }catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+    public Product getById(int productId){
+
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try(Connection conn = instance.getConnection()){
+
+            logger.info("Connection sucessful");
+
+            productDao = new ProductDaoJdbc(conn);
+            Product productById = productDao.getById(productId);
+
+            return productById;
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public List<Product> getAllProducts(){
+
+        List<Product> productList = new ArrayList<>();
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try(Connection conn = instance.getConnection()){
+
+            logger.info("Connection sucessful");
+
+            productDao = new ProductDaoJdbc(conn);
+            productList  = productDao.getAll();
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+
+        return productList;
+    }
+
+    public List<Product> getProdcutsByNameALike(Product searchByName){
+
+        List<Product> productList = new ArrayList<>();
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try(Connection conn = instance.getConnection()){
+
+            logger.info("Connection sucessful");
+
+            productDao = new ProductDaoJdbc(conn);
+            productList = productDao.getAllByNameAlike(searchByName.getName());
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+
+        return productList;
     }
 }

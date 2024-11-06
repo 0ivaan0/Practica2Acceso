@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import service.ProductService;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDaoJdbc implements IProductDao {
@@ -51,15 +53,15 @@ public class ProductDaoJdbc implements IProductDao {
 
             //return stmt.executeUpdate();
         } catch (SQLException e) {
-            logger.error("Insert prepared statement error");
-            throw new RuntimeException("Error inserting product", e);
+            logger.error("SQL ERROR in InsertProduct");
+            throw new RuntimeException("GENERAL ERROR in InsertProduct", e);
         }
         return -1;
     }
 
     @Override
     public boolean update(Product toModify) {
-        String sql = "UPDATE PRODUCT SET name = ?, description = ?, stock = ?, price = ?, available = ?, updateDate = ? WHERE id = ?";
+        String sql = "UPDATE PRODUCT SET name = ?, description = ?, stock = ?, price = ?, available = ?, update_Date = ? WHERE id = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
@@ -71,15 +73,20 @@ public class ProductDaoJdbc implements IProductDao {
             stmt.setObject(6, toModify.getUpdateDate());  // Asumimos que updateDate es de tipo LocalDateTime
             stmt.setInt(7, toModify.getId());  // El ID es necesario para identificar el producto a actualizar
 
-            stmt.executeUpdate();
+            int rowsAffected = stmt.executeUpdate();
 
-            logger.info("Modification prepared statement sucessfully");
+            if (rowsAffected > 0) {
+                logger.info("Modification successful, rows affected: " + rowsAffected);
+                return true;  // Retornamos true si al menos una fila fue actualizada
+            } else {
+                logger.warn("No rows affected, check if the product ID exists");
+            }
 
         } catch (SQLException e) {
-            logger.error("Update prepared statement error");
+            logger.error("SQL ERROR in UpdateProduct");
             //throw new RuntimeException(e);
         } catch (Exception e) {
-            logger.error("Update prepared statement general error");
+            logger.error("GENERAL ERROR in UpdateProduct",e);
         }
 
         return false;
@@ -87,22 +94,128 @@ public class ProductDaoJdbc implements IProductDao {
 
         @Override
     public boolean delete(int idToDelete) {
+        String sql = "DELETE FROM PRODUCT WHERE id = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setInt(1,idToDelete);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                logger.info("Product with ID "+idToDelete+" sucessfully deleted");
+                return true;
+            } else {
+                logger.warn("Product ID not found");
+            }
+
+
+        } catch (SQLException e) {
+            logger.error("SQL ERROR in DeleteProduct");
+            //throw new RuntimeException(e);
+        }catch (Exception e) {
+            logger.error("GENERAL ERROR in DeleteProduct",e);
+        }
         return false;
     }
 
     @Override
     public Product getById(int productId) {
-        return null;
+        String sql = "SELECT * FROM PRODUCT WHERE id = ?";
+        Product product = null;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setInt(1,productId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("name"));
+                product.setDescription(rs.getString("description"));
+                product.setStock(rs.getInt("stock"));
+                product.setPrice(rs.getDouble("price"));
+                product.setAvailable(rs.getBoolean("available"));
+                product.setCreateDate(rs.getObject("create_Date", LocalDateTime.class));
+                product.setUpdateDate(rs.getObject("update_Date", LocalDateTime.class));  // Si updateDate es LocalDateTime
+            }
+
+        } catch (SQLException e) {
+            logger.error("SQL ERROR in GetById");
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in GetById",e);
+        }
+
+        return product;
     }
 
     @Override
     public List<Product> getAll() {
-        return List.of();
+
+        String sql = "SELECT * FROM PRODUCT";
+        List<Product> productList = new ArrayList<>();
+
+        try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql);) {
+
+            while (rs.next()) {
+                Product product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("name"));
+                product.setDescription(rs.getString("description"));
+                product.setStock(rs.getInt("stock"));
+                product.setPrice(rs.getDouble("price"));
+                product.setAvailable(rs.getBoolean("available"));
+                product.setCreateDate(rs.getObject("create_Date", LocalDateTime.class));
+                product.setUpdateDate(rs.getObject("update_Date", LocalDateTime.class));
+                productList.add(product);
+            }
+
+        } catch (SQLException e) {
+            logger.error("SQL ERROR in GetAll");
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in GetAll",e);
+        }
+
+        return productList;
     }
 
     @Override
     public List<Product> getAllByNameAlike(String name) {
-        return List.of();
+
+        String sql = "SELECT * FROM PRODUCT WHERE name = ?";
+        List<Product> productList = new ArrayList<>();
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setString(1, name);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Product product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("name"));
+                product.setDescription(rs.getString("description"));
+                product.setStock(rs.getInt("stock"));
+                product.setPrice(rs.getDouble("price"));
+                product.setAvailable(rs.getBoolean("available"));
+                product.setCreateDate(rs.getObject("create_Date", LocalDateTime.class));
+                product.setUpdateDate(rs.getObject("update_Date", LocalDateTime.class));
+                productList.add(product);
+            }
+
+        } catch (SQLException e) {
+            logger.error("SQL ERROR in getAllByNameAlike");
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in getAllByNameAlike",e);
+        }
+
+        return productList;
     }
 
     @Override
