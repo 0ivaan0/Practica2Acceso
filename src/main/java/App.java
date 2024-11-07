@@ -71,7 +71,7 @@ public class App {
 //        Client cliente = new Client();
 //        cliente.setName("Ivan");
 //        cliente.setSurname("Lopez");
-//        cliente.setEmail("juan.perez@example.com");
+//        cliente.setEmail("ivan.lopez@example.com");
 //        cliente.setPurchases(20);
 //        Client cId = cs.newClient(cliente);
 //        System.out.println(cId.getId());
@@ -79,6 +79,22 @@ public class App {
         //--------------UPDATE CLIENT----------------
 //        Client c = cs.updateClient(cliente);
 //        System.out.println(c.getName()+" "+c.getSurname());
+
+        //--------------DELETE CLIENT----------------
+//        Client c = new Client();
+//        c.setId(2);
+//        boolean h =cs.deleteClient(c);
+//        System.out.println(h);
+
+        //--------------GET ALL---------------------
+//        List<Client> list = cs.getAllClients();
+//        for (Client c : list) {
+//            System.out.println(c);
+//        }
+
+        //-------------GET BY EMAIL---------------
+//        Client c01 = cs.getClientByEmail("ivan.lopez@example.com");
+//        System.out.println(c01);
 
 
     }

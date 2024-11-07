@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientService {
@@ -86,11 +87,66 @@ public class ClientService {
         return false;
     }
 
+//    public boolean incrementPurchases(int clientId, int amount) {
+//
+//        ConnectionManager instance = ConnectionManager.getInstance();
+//        try(Connection conn = instance.getConnection()){
+//
+//            logger.info("Connection sucessful");
+//
+//            clientDao = new ClientDaoJdbc(conn);
+//            boolean verify = clientDao.incrementPurchases();
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
+
     public List<Client> getAllClients() {
-        return clientDao.getAll();
+
+        List<Client> clientList = new ArrayList<>();
+
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try(Connection conn = instance.getConnection()){
+
+            logger.info("Connection sucessful");
+
+            clientDao = new ClientDaoJdbc(conn);
+            clientList = clientDao.getAll();
+            return clientList;
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+
+        return clientList;
     }
 
     public Client getClientByEmail(String email) {
-        return clientDao.getByEmail(email);
+
+        Client client = new Client();
+
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try(Connection conn = instance.getConnection()){
+
+            logger.info("Connection sucessful");
+
+            clientDao = new ClientDaoJdbc(conn);
+            client = clientDao.getByEmail(email);
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+
+        return client;
     }
 }

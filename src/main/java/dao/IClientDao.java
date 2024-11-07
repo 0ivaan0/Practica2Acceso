@@ -12,7 +12,7 @@ public interface IClientDao {
 
     boolean delete(int idToDelete);
 
-    int incrementPurchases(int clientId, int amount);
+    boolean incrementPurchases(int clientId, int amount);
 
     Client getById(int clientId);
 

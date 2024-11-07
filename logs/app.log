@@ -198,3 +198,28 @@ java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" becau
 2024-11-07 09:49:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 2024-11-07 09:49:03 [main] INFO  service.ClientService - Connection sucessful
 2024-11-07 09:49:03 [main] INFO  dao.impl.ClientDaoJdbc - Modification successful, rows affected: 1
+2024-11-07 11:22:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 11:22:26 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@51c668e3
+2024-11-07 11:22:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 11:22:26 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 11:24:32 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 11:24:33 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6221a451
+2024-11-07 11:24:33 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 11:24:33 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 11:24:33 [main] INFO  dao.impl.ClientDaoJdbc - Client with ID 2 sucessfully deleted
+2024-11-07 12:13:59 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 12:14:00 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e3967ea
+2024-11-07 12:14:00 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 12:14:00 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 12:14:21 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 12:14:22 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6fdbe764
+2024-11-07 12:14:22 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 12:14:22 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 12:15:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 12:15:45 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70e9c95d
+2024-11-07 12:15:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 12:15:45 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 12:46:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 12:46:28 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3012646b
+2024-11-07 12:46:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 12:46:28 [main] INFO  service.ClientService - Connection sucessful

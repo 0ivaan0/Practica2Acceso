@@ -53,7 +53,7 @@ public class ProductDaoJdbc implements IProductDao {
 
             //return stmt.executeUpdate();
         } catch (SQLException e) {
-            logger.error("SQL ERROR in InsertProduct");
+            logger.error("SQL ERROR in InsertProduct",e);
             //throw new RuntimeException(e);
         } catch (Exception e) {
             logger.error("GENERAL ERROR in InsertProduct",e);
@@ -85,7 +85,7 @@ public class ProductDaoJdbc implements IProductDao {
             }
 
         } catch (SQLException e) {
-            logger.error("SQL ERROR in UpdateProduct");
+            logger.error("SQL ERROR in UpdateProduct",e);
             //throw new RuntimeException(e);
         } catch (Exception e) {
             logger.error("GENERAL ERROR in UpdateProduct",e);
@@ -113,7 +113,7 @@ public class ProductDaoJdbc implements IProductDao {
 
 
         } catch (SQLException e) {
-            logger.error("SQL ERROR in DeleteProduct");
+            logger.error("SQL ERROR in DeleteProduct",e);
             //throw new RuntimeException(e);
         }catch (Exception e) {
             logger.error("GENERAL ERROR in DeleteProduct",e);
@@ -145,7 +145,7 @@ public class ProductDaoJdbc implements IProductDao {
             }
 
         } catch (SQLException e) {
-            logger.error("SQL ERROR in GetById");
+            logger.error("SQL ERROR in GetById",e);
             //throw new RuntimeException(e);
         } catch (Exception e) {
             logger.error("GENERAL ERROR in GetById",e);
@@ -176,7 +176,7 @@ public class ProductDaoJdbc implements IProductDao {
             }
 
         } catch (SQLException e) {
-            logger.error("SQL ERROR in GetAll");
+            logger.error("SQL ERROR in GetAll",e);
             //throw new RuntimeException(e);
         } catch (Exception e) {
             logger.error("GENERAL ERROR in GetAll",e);
@@ -211,7 +211,7 @@ public class ProductDaoJdbc implements IProductDao {
             }
 
         } catch (SQLException e) {
-            logger.error("SQL ERROR in getAllByNameAlike");
+            logger.error("SQL ERROR in getAllByNameAlike",e);
             //throw new RuntimeException(e);
         } catch (Exception e) {
             logger.error("GENERAL ERROR in getAllByNameAlike",e);
@@ -222,6 +222,30 @@ public class ProductDaoJdbc implements IProductDao {
 
     @Override
     public boolean subtractStock(int idToSubtract, int amount) {
-        return false;
+        String sql = "UPDATE PRODUCT SET stock = stock - ? WHERE id = ?";
+        boolean verify = false;
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setInt(1, amount);
+            stmt.setInt(2, idToSubtract);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                logger.info("Stock product updated successfully");
+                verify = true;
+            } else {
+                logger.error("Stock product didn't update, check the ID product");
+            }
+
+        } catch (SQLException e) {
+            logger.error("GENERAL ERROR in SubtractStock",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in SubtractStock",e);
+        }
+
+        return verify;
     }
 }
