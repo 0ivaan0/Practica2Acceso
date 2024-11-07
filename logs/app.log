@@ -178,3 +178,23 @@ java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" becau
 2024-11-06 19:46:17 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52719fb6
 2024-11-06 19:46:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 2024-11-06 19:46:17 [main] INFO  service.ProductService - Connection sucessful
+2024-11-07 09:19:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 09:19:26 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6da21078
+2024-11-07 09:19:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 09:19:26 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 09:20:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 09:20:19 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6da21078
+2024-11-07 09:20:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 09:20:19 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 09:20:19 [main] ERROR dao.impl.ClientDaoJdbc - SQL ERROR in InsertClient
+2024-11-07 09:31:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 09:31:02 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6da21078
+2024-11-07 09:31:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 09:31:02 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 09:31:02 [main] ERROR dao.impl.ClientDaoJdbc - Error: The client's email is already registered. Ivan
+2024-11-07 09:31:02 [main] ERROR dao.impl.ClientDaoJdbc - SQL ERROR in InsertClient
+2024-11-07 09:49:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-07 09:49:03 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6da21078
+2024-11-07 09:49:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-07 09:49:03 [main] INFO  service.ClientService - Connection sucessful
+2024-11-07 09:49:03 [main] INFO  dao.impl.ClientDaoJdbc - Modification successful, rows affected: 1

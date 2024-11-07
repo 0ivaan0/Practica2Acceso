@@ -7,38 +7,31 @@ public class Client {
 
     private int id;
     private String name;
-    private String description;
-    private int stock;
-    private double price;
-    private boolean available;
+    private String surname;
+    private String email;
+    private int purchases;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return id == client.id && stock == client.stock && Double.compare(price, client.price) == 0 && available == client.available && Objects.equals(name, client.name) && Objects.equals(description, client.description) && Objects.equals(createDate, client.createDate) && Objects.equals(updateDate, client.updateDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, description, stock, price, available, createDate, updateDate);
-    }
 
     @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", stock=" + stock +
-                ", price=" + price +
-                ", available=" + available +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", purchases=" + purchases +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return id == client.id && purchases == client.purchases && Objects.equals(name, client.name) && Objects.equals(surname, client.surname) && Objects.equals(email, client.email) && Objects.equals(createDate, client.createDate) && Objects.equals(updateDate, client.updateDate);
     }
 
     public int getId() {
@@ -57,36 +50,28 @@ public class Client {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public int getStock() {
-        return stock;
+    public String getEmail() {
+        return email;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public double getPrice() {
-        return price;
+    public int getPurchases() {
+        return purchases;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setPurchases(int purchases) {
+        this.purchases = purchases;
     }
 
     public LocalDateTime getCreateDate() {

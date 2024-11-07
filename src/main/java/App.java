@@ -1,5 +1,7 @@
 import dao.ConnectionManager;
+import model.Client;
 import model.Product;
+import service.ClientService;
 import service.ProductService;
 
 import java.sql.Connection;
@@ -53,6 +55,31 @@ public class App {
 //        for (Product p: lp) {
 //            System.out.println(p);
 //        }
+
+
+        ClientService cs = new ClientService();
+
+        //--------------INSERT CLIENT-------------------
+//        Client cliente = new Client();
+//        cliente.setName("Ivan");
+//        cliente.setSurname("Klk");
+//        cliente.setEmail("juan.perez@example.com");
+//        cliente.setPurchases(20);
+//        cliente.setId(2);
+//        Client cId = cs.newClient(cliente);
+//        System.out.println(cId.getId());
+//        Client cliente = new Client();
+//        cliente.setName("Ivan");
+//        cliente.setSurname("Lopez");
+//        cliente.setEmail("juan.perez@example.com");
+//        cliente.setPurchases(20);
+//        Client cId = cs.newClient(cliente);
+//        System.out.println(cId.getId());
+
+        //--------------UPDATE CLIENT----------------
+//        Client c = cs.updateClient(cliente);
+//        System.out.println(c.getName()+" "+c.getSurname());
+
 
     }
 }

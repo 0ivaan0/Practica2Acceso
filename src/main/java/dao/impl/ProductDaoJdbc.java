@@ -54,7 +54,9 @@ public class ProductDaoJdbc implements IProductDao {
             //return stmt.executeUpdate();
         } catch (SQLException e) {
             logger.error("SQL ERROR in InsertProduct");
-            throw new RuntimeException("GENERAL ERROR in InsertProduct", e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in InsertProduct",e);
         }
         return -1;
     }
