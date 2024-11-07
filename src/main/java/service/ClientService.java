@@ -65,7 +65,7 @@ public class ClientService {
         return newInfo;
     }
 
-    public boolean deleteClient(int clientId) {
+    public boolean deleteClient(Client clientId) {
 
         ConnectionManager instance = ConnectionManager.getInstance();
         try(Connection conn = instance.getConnection()){
@@ -73,7 +73,7 @@ public class ClientService {
             logger.info("Connection sucessful");
 
             clientDao = new ClientDaoJdbc(conn);
-            boolean verify = clientDao.delete(clientId);
+            boolean verify = clientDao.delete(clientId.getId());
             return verify;
 
         } catch (SQLException e) {
