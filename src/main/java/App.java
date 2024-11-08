@@ -3,6 +3,7 @@ import model.Client;
 import model.Product;
 import service.ClientService;
 import service.ProductService;
+import service.SalesService;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -96,6 +97,10 @@ public class App {
 //        Client c01 = cs.getClientByEmail("ivan.lopez@example.com");
 //        System.out.println(c01);
 
-
+        //-------------INSERT SALES-----------------
+        SalesService ss = new SalesService();
+        Product product = productService.getById(12);
+        Client client = cs.getClientByEmail("juan.perez@example.com");
+        ss.newSale(product,client,10);
     }
 }

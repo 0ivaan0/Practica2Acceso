@@ -14,8 +14,8 @@ import java.util.List;
 public class ProductDaoJdbc implements IProductDao {
 
     private Connection connection;
-
     private static final Logger logger = LoggerFactory.getLogger(ProductDaoJdbc.class);
+
     public ProductDaoJdbc(Connection connection) {
         this.connection = connection;
     }
@@ -32,7 +32,6 @@ public class ProductDaoJdbc implements IProductDao {
             stmt.setBoolean(5, toCreate.isAvailable());
             stmt.setObject(6, toCreate.getCreateDate());
             stmt.setObject(7, toCreate.getUpdateDate());
-            logger.info("Insert prepared statement sucessfully");
 
             // Ejecutamos la inserción
             int rowsAffected = stmt.executeUpdate();
@@ -41,12 +40,13 @@ public class ProductDaoJdbc implements IProductDao {
             if (rowsAffected > 0) {
                 try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
+                        logger.info("Insert prepared statement successfully");
                         // Recuperamos el ID generado y lo asignamos al producto
                         return generatedKeys.getInt(1);  // Retorna el ID generado
                     }
                     else {
-                        logger.error("Creating product failed, no ID obtained.");
-                        throw new SQLException("Creating product failed, no ID obtained.");
+                        logger.error("Inserting product failed, no ID obtained.");
+                        //throw new SQLException("Creating product failed, no ID obtained.");
                     }
                 }
             }

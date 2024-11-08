@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 public class SalesService {
 
@@ -28,6 +29,7 @@ public class SalesService {
 
         ConnectionManager instance = ConnectionManager.getInstance();
         try (Connection conn = instance.getConnection()) {
+            instance.beginTransaction(conn);
 
             logger.info("Connection successful");
 
@@ -40,16 +42,29 @@ public class SalesService {
             productDao = new ProductDaoJdbc(conn);
             verify = productDao.subtractStock(product.getId(),quantity);
 
+
             if (verify == true) {
                 clientDao = new ClientDaoJdbc(conn);
                 verify2 = clientDao.incrementPurchases(client.getId(),quantity);
             } else {
                 logger.error("Error trying to subtract the product stock from the service newSale.");
+                instance.rollbackTransaction(conn);
             }
 
             if (verify2 == true) {
                 Sales sales = new Sales();
+                sales.setCustomer(client);
+                sales.setProduct(product);
+                sales.setQuantity(quantity);
+                sales.setDateOfSale(LocalDateTime.now());
+                salesDao = new SalesDaoJdbc(conn);
+                salesDao.insert(sales);
+                instance.commitTransaction(conn);
+                logger.info("Purchase inserted successfully");
 
+            } else {
+                instance.rollbackTransaction(conn);
+                logger.error("Error in InsertSale, something didn't go as expected");
             }
 
 
@@ -62,6 +77,40 @@ public class SalesService {
             //throw new RuntimeException(e);
         }
 
+    }
+
+    public Product getMostPurchasedProduct() {
+
+        Product product = new Product();
+
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try (Connection conn = instance.getConnection()) {
+
+            logger.info("Connection successful");
+
+            salesDao = new SalesDaoJdbc(conn);
+            product =salesDao.getMostPurchasedProduct();
+
+        } catch (SQLException e) {
+            logger.error("There was an error trying to establish the connection",e);
+            //throw new RuntimeException(e);
+        } catch (Exception e) {
+            logger.error("General error",e);
+            //throw new RuntimeException(e);
+        }
+
+        return product;
+    }
+
+    public Client getTopPurchasingClient() throws SQLException {
+
+        ConnectionManager instance = ConnectionManager.getInstance();
+        try (Connection conn = instance.getConnection()) {
+
+            logger.info("Connection successful");
+
+        }
+         return null;
     }
 
 }

@@ -223,3 +223,13 @@ java.lang.NullPointerException: Cannot invoke "java.util.List.add(Object)" becau
 2024-11-07 12:46:28 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3012646b
 2024-11-07 12:46:28 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 2024-11-07 12:46:28 [main] INFO  service.ClientService - Connection sucessful
+2024-11-08 12:23:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-08 12:23:37 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6da21078
+2024-11-08 12:23:37 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-08 12:23:37 [main] INFO  service.ProductService - Connection sucessful
+2024-11-08 12:23:37 [main] INFO  service.ClientService - Connection sucessful
+2024-11-08 12:23:37 [main] INFO  service.SalesService - Connection successful
+2024-11-08 12:23:37 [main] INFO  dao.impl.ProductDaoJdbc - Stock product updated successfully
+2024-11-08 12:23:37 [main] INFO  dao.impl.ClientDaoJdbc - Client purchases incremented successfully
+2024-11-08 12:23:37 [main] INFO  dao.impl.SalesDaoJdbc - Insert prepared statement successfully
+2024-11-08 12:23:37 [main] INFO  service.SalesService - Purchase inserted successfully
