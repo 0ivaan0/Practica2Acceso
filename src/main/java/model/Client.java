@@ -13,6 +13,29 @@ public class Client {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
+    public Client() {
+
+    }
+
+    public Client(int id, String name, String surname, String email, int purchases, LocalDateTime createDate, LocalDateTime updateDate) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.purchases = purchases;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
+    public Client(String name, String surname, String email, int purchases, LocalDateTime createDate, LocalDateTime updateDate) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.purchases = purchases;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
     @Override
     public String toString() {
         return "Client{" +

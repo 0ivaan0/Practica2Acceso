@@ -14,6 +14,31 @@ public class Product {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
+    public Product() {
+
+    }
+
+    public Product(int id, String name, String description, int stock, double price, boolean available, LocalDateTime createDate, LocalDateTime updateDate) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.stock = stock;
+        this.price = price;
+        this.available = available;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
+    public Product(String name, String description, int stock, double price, boolean available, LocalDateTime createDate, LocalDateTime updateDate) {
+        this.name = name;
+        this.description = description;
+        this.stock = stock;
+        this.price = price;
+        this.available = available;
+        this.createDate = createDate;
+        this.updateDate = updateDate;
+    }
+
     @Override
     public String toString() {
         return "Product{" +

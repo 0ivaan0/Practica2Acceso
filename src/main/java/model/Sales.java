@@ -10,6 +10,25 @@ public class Sales {
     private int quantity;
     private LocalDateTime dateOfSale;
 
+    public Sales(){
+
+    }
+
+    public Sales(int salesId, Client customer, Product product, int quantity, LocalDateTime dateOfSale) {
+        this.salesId = salesId;
+        this.customer = customer;
+        this.product = product;
+        this.quantity = quantity;
+        this.dateOfSale = dateOfSale;
+    }
+
+    public Sales(Client customer, Product product, int quantity, LocalDateTime dateOfSale) {
+        this.customer = customer;
+        this.product = product;
+        this.quantity = quantity;
+        this.dateOfSale = dateOfSale;
+    }
+
     // Métodos get y set
     public int getSalesId() {
         return salesId;

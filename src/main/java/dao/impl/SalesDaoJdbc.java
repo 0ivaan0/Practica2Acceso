@@ -7,9 +7,7 @@ import model.Sales;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class SalesDaoJdbc implements ISalesDao {
 
@@ -51,12 +49,61 @@ public class SalesDaoJdbc implements ISalesDao {
     @Override
     public Product getMostPurchasedProduct() {
 
+        Product product = null;
 
-        return null;
+        String sql = "{call GetMostPurchasesProduct()}";
+
+        try (CallableStatement stmt = connection.prepareCall(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                product = new Product();
+                product.setId(rs.getInt("ID"));
+                product.setName(rs.getString("NAME"));
+                product.setDescription(rs.getString("DESCRIPTION"));
+                product.setStock(rs.getInt("STOCK"));
+                product.setPrice(rs.getDouble("PRICE"));
+                product.setAvailable(rs.getBoolean("AVAILABLE"));
+                product.setCreateDate(rs.getTimestamp("CREATE_DATE").toLocalDateTime());
+                product.setUpdateDate(rs.getTimestamp("UPDATE_DATE").toLocalDateTime());
+            }
+        } catch (SQLException e) {
+            logger.info("SQL ERROR in getMostPurchasedProduct");
+            //throw new SQLException("Error executing GetTopPurchasesProduct stored procedure", e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in getMostPurchasedProduct",e);
+        }
+
+        return product;
     }
 
     @Override
     public Client getTopPurchasingClient() {
-        return null;
+
+        Client client = null;
+
+        String sql = "{call GetTopPurchasingClient()}";
+
+        try (CallableStatement stmt = connection.prepareCall(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                client = new Client();
+                client.setId(rs.getInt("ID"));
+                client.setName(rs.getString("NAME"));
+                client.setSurname(rs.getString("SURNAME"));
+                client.setEmail(rs.getString("EMAIL"));
+                client.setPurchases(rs.getInt("PURCHASES"));
+                client.setCreateDate(rs.getTimestamp("CREATE_DATE").toLocalDateTime());
+                client.setUpdateDate(rs.getTimestamp("UPDATE_DATE").toLocalDateTime());
+            }
+        } catch (SQLException e) {
+            logger.error("SQL ERROR in getTopPurchasingClient",e);
+            //throw new SQLException("Error executing GetTopPurchasingClient stored procedure", e);
+        } catch (Exception e) {
+            logger.error("GENERAL ERROR in getTopPurchasingClient",e);
+        }
+
+        return client;
     }
 }
